@@ -73,6 +73,7 @@ import math
 import pyglet
 from pyglet import image
 from pyglet.gl import *
+from pyglet.image.codecs.png import PNGImageDecoder
 
 from cocos.batch import BatchableNode
 from cocos.rect import Rect
@@ -117,7 +118,7 @@ class Sprite(BatchableNode, pyglet.sprite.Sprite):
         """
 
         if isinstance(image, string_types):
-            image = pyglet.resource.image(image)
+            image = pyglet.image.load(image, decoder=PNGImageDecoder())
 
         self.transform_anchor_x = 0
         self.transform_anchor_y = 0
