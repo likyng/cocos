@@ -61,6 +61,7 @@ from pyglet import font
 from pyglet.window import key
 from pyglet.gl import *
 import pyglet.graphics
+from pyglet.image.codecs.png import PNGImageDecoder
 
 from cocos.layer import *
 from cocos.director import *
@@ -524,7 +525,7 @@ class ImageMenuItem (BaseMenuItem):
     """ A menu item that shows a selectable Image """
     def __init__(self, image, callback_func, *args, **kwargs):
         if isinstance(image, string_types):
-            image = pyglet.resource.image(image)
+            image = pyglet.image.load(image, decoder=PNGImageDecoder())
         self.image = image
         super(ImageMenuItem, self).__init__(callback_func, *args, **kwargs)
 
