@@ -38,6 +38,7 @@ from __future__ import division, print_function, unicode_literals
 from cocos.cocosnode import CocosNode
 import pyglet
 from pyglet.gl import *
+from pyglet.image.codecs.png import PNGImageDecoder
 from cocos.euclid import *
 import math
 import copy
@@ -208,7 +209,8 @@ class Canvas(CocosNode):
         self._vertex_list = None
         self._context = Context()
         self._context_stack = []
-        self._texture = image = pyglet.resource.image('draw_texture.png').get_texture()
+        #self._texture = image = pyglet.resource.image('draw_texture.png').get_texture()
+        self._texture = image = pyglet.image.load("/usr/lib/python3.4/site-packages/cocos/resources/draw_texture.png", decoder=PNGImageDecoder()).get_texture()
 
         self._context_change = True
         self._position = 0, 0
