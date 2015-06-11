@@ -45,6 +45,7 @@ import ctypes
 
 import pyglet
 from pyglet.gl import *
+from pyglet.image.codecs.png import PNGImageDecoder 
 
 from cocos.cocosnode import CocosNode
 from cocos.euclid import Point2
@@ -238,7 +239,7 @@ class ParticleSystem(CocosNode):
 
     def load_texture(self):
         if self.texture is None:
-            pic = pyglet.image.load('fire.png', file=pyglet.resource.file('fire.png'))
+            pic = pyglet.image.load('fire.png', file=pyglet.resource.file('fire.png'), decoder=PNGImageDecoder())
             self.__class__.texture = pic.get_texture()
 
     def on_enter(self):
